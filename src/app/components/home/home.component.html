@@ -1,0 +1,33 @@
+<div class="flex justify-content-center">
+    <div class="align-items-center justify-content-between hidden lg:flex absolute lg:static w-full left-110 px-6 lg:px-0 z-2"
+        style="top:120px">
+        <div class="flex align-items-center">
+            <img src="assets/images/books-logo.jpeg" alt="Book Logo" class="book-logo">
+            <span class="app-name">ReviewVerse</span>
+        </div>
+        <div class="menu-items-container ml-4"> <!-- Add margin-left for indentation -->
+            <app-menu></app-menu>
+        </div>
+    </div>
+</div>
+<div class="grid-container">
+    <div class="grid-item" *ngFor="let book of homeBooks" (click)="navigateToBookDetails(book)">
+      <h3><strong>{{ book.title }}</strong></h3>
+     
+      
+      <img [src]="book.imageLink" alt="{{ book.imageLink }}">
+      <p>Author: {{ book.author }}</p>
+      <div class="rating">
+        <span *ngFor="let star of getStars(book.rating)" [class]="star === 1 ? 'star-filled' : 'star-empty'">&#9733;</span>
+      </div>
+      
+    </div>
+  </div>
+<div class="pagination-buttons">
+    <button class="page-button" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{currentPage}} of {{totalPages}}</span>
+    <button class="page-button" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
+<div class="'app-book-details'">
+  <ng-content></ng-content> <!-- Projected content will appear here -->
+</div>

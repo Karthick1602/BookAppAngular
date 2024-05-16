@@ -1,0 +1,11 @@
+
+<!-- menu.component.html -->
+<div *ngIf="isLoggedIn()">
+    <p-menubar [model]="isAdmin() ? adminMenuItems : userMenuItems" [styleClass]="'bold-label'"></p-menubar>
+  </div>
+  
+  <div *ngIf="!isLoggedIn()">
+    <p-menubar [model]="regularMenuItems" [styleClass]="'bold-label'"></p-menubar>
+  </div>
+  
+  

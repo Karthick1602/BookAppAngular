@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h2>{{ data.title }}</h2>
+    <button mat-icon-button (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="modal-body">
+  <div class="container">
+    <form [formGroup]="reviewForm" (ngSubmit)="submitDetails()">
+      <div class="field">
+        <label for="reviewerName">Your Name</label>
+        <input type="text" formControlName="reviewerName" class="w-full" name="reviewerName" placeholder="Type your reviewerName">
+        <small *ngIf="reviewerName.invalid && (reviewerName.dirty || reviewerName.touched)" class="block p-error">
+          <div *ngIf="reviewerName.errors?.['required']">Reviewer name is required.</div>
+          <div *ngIf="reviewerName.errors?.['pattern']">Enter a valid Name</div>
+        </small>
+      </div>
+      <div class="field">
+        <label for="reviewContent">Review Content</label>
+        <textarea formControlName="reviewContent" class="w-full" name="reviewContent" placeholder="Comment Please"></textarea>
+        <small *ngIf="reviewContent.invalid && (reviewContent.dirty || reviewContent.touched)" class="block p-error">
+          <div *ngIf="reviewContent.errors?.['required']">Review content is required.</div>
+        </small>
+      </div>      
+      <div class="field">
+        <label for="rating">Your Rating</label>
+        <input type="number" formControlName="rating" class="w-full" name="rating" placeholder="Type your rating">
+      </div>
+      <button pButton label="Submit" styleClass="w-full" [disabled]="reviewForm.invalid" type="submit"></button>
+    </form>
+  </div>
+  </div>
+  

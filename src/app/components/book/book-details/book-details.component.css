@@ -1,0 +1,52 @@
+.book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    text-align: left; /* Align text center */
+}
+
+.book-details h2 {
+    margin-bottom: 20px; /* Add spacing below the title */
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.book-image {
+    margin-right: 20px; /* Add spacing between image and text */
+}
+
+.book-image img {
+    width: 200px; /* Adjust image size as needed */
+    height: 300px;
+}
+
+.book-info {
+    flex: 1; /* Take remaining space */
+    margin-top: 10;
+}
+
+/* Style for author, publisher, category, rating, and price */
+.author, .publisher, .category .price {
+    color: #333; /* Text color */
+    margin-top: 10;
+    
+
+}
+
+.rating {
+    color: #f39c12; /* Rating text color */
+}
+
+.star-filled{ 
+    color: #f39c12; /* Star color */
+}
+.star-empty {
+    color: darkgray;
+}
+
+.price {
+    color: #27ae60; /* Price text color */
+}

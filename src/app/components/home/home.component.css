@@ -1,0 +1,107 @@
+/* Container for the header/navigation bar */
+.header-container {
+    display: flex;
+    justify-content: center;
+}
+.app-name {
+    font-size: 20px; /* Adjust font size as needed */
+    margin-left: 10px; /* Add margin for spacing */
+    color: #333; /* Adjust text color as needed */
+    font-weight: bold; /* Make the text bold */
+    font-family: "Calibri", sans-serif; /* Use Calibri font */
+}
+.star-filled {
+    color: gold; /* Color for filled stars */
+  }
+  
+  .star-empty {
+    color: grey; /* Color for empty stars */
+  }
+  
+
+
+/* Header/navigation bar */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    left: 110px;
+    padding: 0 6px; /* Horizontal padding */
+    top: 120px;
+    z-index: 2; /* Ensure it's above other elements */
+}
+
+/* Logo */
+.book-logo {
+    max-width: 100px; /* Adjust the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Container for menu items */
+.menu-items-container {
+    margin-left: 20000px;
+    width: 400px; 
+    border: none;
+    font-weight: bold;/* Add margin for indentation */
+}
+
+/* Hide header on small screens and display on large screens */
+@media (max-width: 991.98px) {
+    .header {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .header {
+        display: flex;
+    }
+}
+.grid-container {
+    display: grid;
+    padding-top: 20px;
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 20px), 1fr)); /* Adjust the width of grid items */
+    grid-gap: 20px; /* Adjust the gap between grid items */
+  }
+  
+  .grid-item {
+    border: 2px  #ccc; /* Add borders to grid items */
+    padding: 1px;
+    text-align: center;
+  }
+  
+  .grid-item img {
+    max-width: 30%;
+  }
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.page-button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #007bff; /* Example background color */
+    color: #fff; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add some border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin: 0 10px; /* Add margin for spacing */
+}
+
+.page-button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+}
+
+.page-button:disabled {
+    background-color: #ced4da; /* Change background color for disabled state */
+    color: #6c757d; /* Change text color for disabled state */
+    cursor: not-allowed; /* Change cursor to not-allowed for disabled state */
+}
+
+
+  

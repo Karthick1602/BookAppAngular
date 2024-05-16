@@ -1,0 +1,68 @@
+<!-- <div class="book-details">
+    <h2>{{ book.title }}</h2>
+    <div class="content">
+        <div class="book-image">
+            <img [src]="book.imageLink" alt="{{ book.title }}">
+        </div>
+        <div class="book-info">
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+            <p><strong>Category:</strong> {{ book.category }}</p>
+            <p><strong>Price:</strong> {{ book.price }}</p>
+            <div class="rating">
+                <span *ngFor="let star of getStars(this.rating)" [class]="star === 1 ? 'star-filled' : 'star-empty'">&#9733;</span>
+                <span class="rating-value">{{ this.rating }}</span> ({{ this.numberOfReviews }} reviews)
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="p-grid book-details">
+    <h2>{{ book.title }}</h2>
+    <div class="p-grid content">
+        <div class="p-col-12 p-md-4 book-image">
+            <img [src]="book.imageLink" alt="{{ book.title }}">
+        </div>
+        <div class="p-col-12 p-md-8 book-info">
+            <div class="p-grid">
+                <div class="p-col-12">
+                    <p><strong>Author:</strong> {{ book.author }}</p>
+                </div>
+                <div class="p-col-12">
+                    <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+                </div>
+                <div class="p-col-12">
+                    <p><strong>Category:</strong> {{ book.category }}</p>
+                </div>
+                <div class="p-col-12">
+                    <p><strong>Price:</strong> {{ book.price }}</p>
+                </div>
+                <div class="p-col-12 rating">
+                    <span *ngFor="let star of getStars(this.rating)"
+                        [class]="star === 1 ? 'star-filled' : 'star-empty'">&#9733;</span>
+                    <span class="rating-value">{{ this.rating }}</span> ({{ this.numberOfReviews }} reviews)
+                </div>
+            </div>
+            <button pButton type="button" label="Add Review" (click)="openDialog()"></button>
+        </div>
+    </div>
+</div>
+<div class="p-grid review-section">
+    <div class="p-col-12">
+        <h3>Reviews</h3>
+        <div *ngIf="reviews && reviews.length > 0">
+            <ul>
+                <li *ngFor="let review of reviews">
+                    <div class="review">
+                        <p><strong>Comment:</strong> {{ review.reviewContent }}</p>
+                        <p>{{ review.rating }}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="!(reviews && reviews.length > 0)">
+            <p>No reviews available for this book.</p>
+        </div>
+    </div>
+</div>
