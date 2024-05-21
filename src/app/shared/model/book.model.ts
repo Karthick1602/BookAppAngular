@@ -8,7 +8,7 @@ export class Book {
      category: string;
      publishedDate: string;
      isbn: string;
-    constructor(id: string,
+    constructor(
        title: string,
        author: string,
        publisher: string,
@@ -18,7 +18,6 @@ export class Book {
        publishedDate: string,
        isbn: string
     ) {
-        this.id=id;
         this.title=title;
         this.author=author;
         this.publisher=publisher;
@@ -28,4 +27,6 @@ export class Book {
         this.publishedDate=publishedDate;
         this.isbn=isbn;
     }
+
+    
   }

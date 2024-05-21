@@ -32,7 +32,6 @@ export class MenuBarComponent {
 
     this.userMenuItems = [
       { label: 'Home', routerLink: '/home' },
-      { label: 'Books', routerLink: '/book' },
       { label: 'Reviews', routerLink: '/review' },
     
       {

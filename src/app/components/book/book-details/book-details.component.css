@@ -1,3 +1,19 @@
+.custom-button {
+    background-color: #f5f5f5; /* Off-white background */
+    color: #000000; /* Black font color */
+}
+.login-message {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    margin-top: 10px; /* Optional: adjust height as needed */
+}
+
+.login-message .button {
+    display: block;
+    margin-top: 10px;
+}
+
 .book-details {
     display: flex;
     flex-direction: column;
@@ -28,6 +44,11 @@
     margin-top: 10;
 }
 
+.book-info .button {
+    flex: 1;
+    margin-top: 10;
+}
+
 /* Style for author, publisher, category, rating, and price */
 .author, .publisher, .category .price {
     color: #333; /* Text color */
@@ -47,6 +68,82 @@
     color: darkgray;
 }
 
+
 .price {
     color: #27ae60; /* Price text color */
+}
+
+.reviews-container {
+    margin-top: 1px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.review-item {
+    width: 50%; /* Each item takes up half of the container's width */
+    padding: 10px; /* Add padding to each item */
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+}
+
+.review-item {
+    margin-bottom: 10px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
+.reviewer-image {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 10px; /* Add spacing between the image and the name */
+}
+
+
+
+.review-separator {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.review {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
+.reviewer-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.review-content {
+    margin-bottom: 10px;
+}
+
+.review-rating {
+    font-style: italic;
+    color: #666;
+}
+
+.review-section h3 {
+    margin-top: 100px;
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    margin-top: 10px; /* Add some spacing from the reviews */
+}
+
+.pagination button {
+    margin: 0 5px; /* Add spacing between the buttons */
+    size-adjust: auto;
 }

@@ -1,1 +1,21 @@
-<p>book works!</p>
+<h2>Books</h2>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let book of books">
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+    <td>
+      <button pButton label="Edit" styleClass="w-full" (click)="editBook(book)"></button>
+      <button pButton label="Delete" styleClass="w-full delete-button" (click)="deleteBook(book)"></button>
+    </td>
+  </tr>
+</table>
+<div class="pagination">
+  <p-button (click)="prevPage()" label="Previous" [disabled]="currentPage === 1"></p-button>
+  <span>Page {{ currentPage }} of {{ calculateCeil() }}</span>
+  <p-button (click)="nextPage()" label="Next" [disabled]="currentPage === calculateCeil()"></p-button>
+</div>

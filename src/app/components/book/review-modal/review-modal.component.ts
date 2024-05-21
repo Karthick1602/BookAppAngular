@@ -1,5 +1,5 @@
 
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Renderer2,Inject, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MessageService } from 'primeng/api';
@@ -12,6 +12,7 @@ import { Review } from 'src/app/shared/model/review.model';
   styleUrls: ['./review-modal.component.css']
 })
 export class ReviewModalComponent implements OnInit {
+
   reviewForm!: FormGroup; 
   bookId: any;
   reviewerId: any;
@@ -20,6 +21,7 @@ export class ReviewModalComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<ReviewModalComponent>,
+    private renderer: Renderer2,
     private fb: FormBuilder,
     private messageService: MessageService,
     private homeBookService: HomeService,
@@ -72,5 +74,7 @@ export class ReviewModalComponent implements OnInit {
 
   closeDialog(): void {
     this.dialogRef.close();
+    
+
   }
 }

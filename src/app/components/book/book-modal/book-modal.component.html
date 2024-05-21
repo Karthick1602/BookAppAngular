@@ -1,0 +1,70 @@
+<div class="modal-header">
+  <button mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="modal-body">
+<div class="form-container">
+    <form [formGroup]="bookForm" (ngSubmit)="submitDetails()">
+      <input type="hidden" formControlName="id">
+      <div>
+        <label>Title:</label>
+        <input type="text" formControlName="title">
+        <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">
+          Title is required.
+        </div>
+      </div>
+      <div>
+        <label>Author:</label>
+        <input type="text" formControlName="author">
+        <div *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched">
+          Author is required.
+        </div>
+      </div>
+      <div>
+        <label>Publisher:</label>
+        <input type="text" formControlName="publisher">
+        <div *ngIf="bookForm.get('publisher')?.invalid && bookForm.get('publisher')?.touched">
+          Publisher is required.
+        </div>
+      </div>
+      <div>
+        <label>Price:</label>
+        <input type="text" formControlName="price">
+        <div *ngIf="bookForm.get('price')?.invalid && bookForm.get('price')?.touched">
+          Price is required.
+        </div>
+      </div>
+      <div>
+        <label>Category:</label>
+        <input type="text" formControlName="category">
+        <div *ngIf="bookForm.get('category')?.invalid && bookForm.get('category')?.touched">
+          Category is required.
+        </div>
+      </div>
+      <div>
+        <label>ImageLink:</label>
+        <input type="text" formControlName="imageLink">
+        <div *ngIf="bookForm.get('imageLink')?.invalid && bookForm.get('imageLink')?.touched">
+          ImageLink is required.
+        </div>
+      </div>
+      <div>
+        <label>PublisherDate:</label>
+        <input type="text" formControlName="publishedDate">
+        <div *ngIf="bookForm.get('publishedDate')?.invalid && bookForm.get('publishedDate')?.touched">
+          PublisherDate is required.
+        </div>
+      </div>
+      <div>
+        <label>ISBN:</label>
+        <input type="text" formControlName="isbn">
+        <div *ngIf="bookForm.get('isbn')?.invalid && bookForm.get('isbn')?.touched">
+          ISBN is required.
+        </div>
+      </div>
+      <!-- Add other form controls as needed -->
+      <button type="submit">Submit</button>
+    </form>
+    </div>
+</div>

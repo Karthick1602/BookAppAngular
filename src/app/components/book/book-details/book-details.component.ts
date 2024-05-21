@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from 'src/app/services/home.service';
 import { Book } from 'src/app/shared/model/book.model';
 import { Review } from 'src/app/shared/model/review.model';
@@ -12,6 +12,7 @@ import { Review } from 'src/app/shared/model/review.model';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent {
+
   title: any;
   bookId: any;
   reviewerId: any;
@@ -26,11 +27,17 @@ export class BookDetailsComponent {
     isbn: ''
   };
   rating: any;
+  showReviews: boolean = false;
   numberOfReviews: any;
   review!: Review;
-  reviews: Review[] = [];
+  selectedSortOption: string = 'ratingHighToLow';
+  
+  currentPage: number = 1;
+    reviewsPerPage: number = 4; // Adjust as needed
+    totalReviews: number = 0;
+    reviews: Review[] = [];
 
-  constructor(private route: ActivatedRoute,private dialog: MatDialog, private homeService:HomeService) {}
+  constructor(public router: Router,private route: ActivatedRoute,private dialog: MatDialog, private homeService:HomeService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -40,6 +47,45 @@ export class BookDetailsComponent {
       
     });
   }
+
+  sortReviews(): void {
+    if (this.selectedSortOption === "ratingHighToLow") {
+        this.reviews.sort((a, b) => b.rating - a.rating); // Sort high to low
+        console.log(this.reviews);
+    } else if (this.selectedSortOption === "ratingLowToHigh") {
+        this.reviews.sort((a, b) => a.rating - b.rating); // Sort low to high
+    }
+    // Reset current page to 1 after sorting
+    this.currentPage = 1;
+}
+
+  calculateCeil(): number {
+    return Math.ceil(this.totalReviews / this.reviewsPerPage);
+  }
+  
+
+  paginateReviews(): any[] {
+    const startIndex = (this.currentPage - 1) * this.reviewsPerPage;
+    const endIndex = startIndex + this.reviewsPerPage;
+    return this.reviews.slice(startIndex, endIndex);
+}
+prevPage(): void {
+  if (this.currentPage > 1) {
+      this.currentPage--;
+  }
+}
+
+nextPage(): void {
+  if (this.currentPage < Math.ceil(this.totalReviews / this.reviewsPerPage)) {
+      this.currentPage++;
+  }
+}
+
+
+  toggleReviews() {
+    this.showReviews = !this.showReviews;
+}
+
   getBookDetails(bookId: string): void {
     this.homeService.getBookDetails(bookId).subscribe(book => {
       this.book = book;
@@ -51,6 +97,8 @@ export class BookDetailsComponent {
   getAllReviews(bookId: string): void {
     this.homeService.getReviewByBook(bookId).subscribe(review =>{
       this.reviews= review;
+      this.totalReviews = this.reviews.length;
+      this.rating = 4;
       console.log(this.reviews.length, this.reviews)
     })
 
@@ -84,6 +132,7 @@ export class BookDetailsComponent {
     return stars;
   }
 
+
   openDialog(): void {
     const dialogRef = this.dialog.open(ReviewModalComponent, {
       width: '400px',
@@ -91,4 +140,24 @@ export class BookDetailsComponent {
       data: { title: this.title, bookId: this.bookId, reviewerId:this.reviewerId } // Pass the two values
     });
   }
+
+  isLoggedIn(): boolean {
+    if(sessionStorage.getItem('loggedIn')){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  navigateToHome(){
+  this.router.navigate(['/home']);
+  }
+
+  navigateToLogin(){
+    this.router.navigate(['/login']);
+  }
+  refreshParentComponent() {
+    // Reload the parent component or perform any action needed to refresh it
+    window.location.reload(); // Example: Reload the page
+  }
+
 }

@@ -27,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReviewModalComponent } from './components/book/review-modal/review-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { BookModalComponent } from './components/book/book-modal/book-modal.component';
 
 
 
@@ -41,7 +42,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReviewComponent,
     MenuBarComponent,
     BookDetailsComponent,
-    ReviewModalComponent
+    ReviewModalComponent,
+    BookModalComponent
   ],
   imports: [
     BrowserModule,
